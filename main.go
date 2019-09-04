@@ -3,6 +3,7 @@ package main
 import (
 	"./chan_service"
 	"./cmmgmt"
+	"./ranging"
 	"./comm_util_pb"
 	"./usresiltm"
 	"bytes"
