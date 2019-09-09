@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package ranging_tm;
+
+message Ranging_Tm {
+  int32 Timing_adjust = 1;
+  int32 Power_adjust = 2;
+  int32 Frequency_adjust = 3;
+  uint32 Sg_id = 4;
+  uint32 Md_id = 5;
+  uint32 Uc_id = 6;
+  string Cm_mac = 7;
+}
+
+message Ranging_Cm_Stats {
+  message Ranging_Cmtx_Stats {
+    uint32 Uc_id = 1;
+    string Rng_state = 2;
+    uint32 Snr = 3;
+    uint32 Data_mer = 4;
+    int32  Rx_power = 5;
+    uint32 Pwr_report_level = 6;
+    uint32 Pwr_peak_level = 7;
+    uint32 Phy_peak_level = 8;
+    uint32 Dyn_pwr_max = 9;
+    uint32 Dyn_pwr_min = 10;
+    uint32 Pwr_min_level = 11;
+    uint32 Pwr_load = 12;
+    int32  Timing_offset = 13;
+    int32  Init_timing_offset = 14;
+    int32  Timing_adjust_raw_avg = 15;
+    int32  Timing_adjust_raw_lt_avg = 16;
+    int32  Timing_adjust_raw_min = 17;
+    int32  Timing_adjust_raw_max = 18;
+    uint32 Good_coef_cnt = 19;
+    uint32 Scale_coef_cnt = 20;
+    uint32 Impulse_coef_cnt = 21;
+    uint32 Pre_equ_coeff_load_cnt = 22;
+    uint32 Phy_op_mode = 23;
+    uint32 Init_rng_interval = 24; // Interval between last 2 Init Ranging
+    uint32 Hit_count = 25; // SM-RNG poll HIT RNGREQ counter
+    uint32 Mis_count = 26; // SM-RNG poll miss RNGREQ counter
+    uint32 Con_mis_count = 27; // SM-RNG poll consecutive miss RNGREQ counter
+    int32  Power_adj = 28; // Power adjust
+    uint32 Cmdpwr_rep_pwr = 29; // CM reported channel power level
+    uint32 Cmdpwr_cmd_pwr = 30; // CM commanded channel power level
+    uint32 Cmdpwr_pwr_low = 31; // Minimum US Channel Tx power level
+    uint32 Cmdpwr_pwr_load = 32; // Tx channel load
+    uint32 Cmdpwr_rep_pwr_norm = 33; // Normalized CM reported channel power level
+    uint32 Cmdpwr_cmd_pwr_norm = 34; // Normalized CM commanded channel power level
+    uint32 Cmdpwr_pwr_low_norm = 35; // Normalized Minimum US Channel Tx power level
+    uint32 Cmdpwr_pwr_load_norm = 36; // Normalized Tx channel load
+  }
+  uint32 Sg_id = 1;
+  uint32 Md_id = 2;
+  string Cm_mac = 3;
+  uint32 Min_pwr_load = 4; 
+  repeated Ranging_Cmtx_Stats Cmtx_stats = 5;
+  uint32 Sm_exhausted_count = 6;
+  uint32 Cmdpwr_pwr_max = 7;
+  uint32 Cmdpwr_pwr_hi = 8;
+  uint32 Cmdpwr_neq = 9;
+  uint32 Cmdpwr_load_min_set = 10;
+  uint32 Cmdpwr_min_drw = 11;
+  uint32 Cmdpwr_max_drw = 12;
+  uint32 Cmdpwr_pwr_max_norm = 13;
+  uint32 Cmdpwr_pwr_hi_norm = 14;
+  uint32 Cmdpwr_load_min_set_norm = 15;
+  uint32 Cmdpwr_min_drw_norm = 16;
+  uint32 Cmdpwr_max_drw_norm = 17;
+}
+
+message Ranging_Cm_Stats_List {
+  repeated Ranging_Cm_Stats Cm_stats = 1;
+}
+
+message Ranging_Md_Stats {
+  uint32 Sg_id = 1;
+  uint32 Md_id = 2;
+  uint32 Total_rng_reqs = 3;
+  uint32 Rng_reqs = 4;
+  uint32 Init_rng_reqs = 5;
+  uint32 BInit_rng_reqs = 6;
+  uint32 Invalid_rng_reqs = 7;
+  uint32 Rng_aborts = 8;
+  uint32 Rng_errors = 9;
+}
+
+message Ranging_Md_Stats_List {
+  repeated Ranging_Md_Stats Md_stats = 1;
+}
+

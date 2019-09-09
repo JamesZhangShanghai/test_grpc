@@ -1,0 +1,27 @@
+
+syntax = "proto3";
+
+package chan_service;
+
+message Request {
+  int64 unix_time       = 1;
+  string container_name = 2;
+  string proto_name     = 3;
+  string cluster_ip     = 4;
+  string namespace      = 5;
+  int64  expiration     = 6;
+  bool   is_delta       = 7;
+  string iso_time       = 8;
+  bytes tm_data         = 20;
+  uint64 sequence_id    = 21;
+}
+
+
+message Response {
+  int32 ret_code = 1;
+  string ret_msg = 2;
+}
+
+service Post {
+  rpc StreamTmData (Request) returns (Response) {}
+}
