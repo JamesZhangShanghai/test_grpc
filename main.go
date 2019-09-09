@@ -3,7 +3,9 @@ package main
 import (
 	"./chan_service"
 	"./cmmgmt"
-	"./ranging"
+	"./ranging_tm"
+	"./ranging_tm_v2"
+	"./ranging_tm_v3"
 	"./comm_util_pb"
 	"./usresiltm"
 	"bytes"
@@ -39,12 +41,193 @@ var CmStateTm = cmmgmt.CmStateTmMsg{
 	IsDelete: false,
 }
 
+var Rang_CmtxState=ranging_tm.Ranging_Cm_Stats_Ranging_Cmtx_Stats {
+	        UcId: 3,
+		RngState :  "test",
+		Snr: 38,
+		DataMer: 36,
+                RxPower: 6,
+		PwrReportLevel: 8,
+		PwrPeakLevel: 3,
+		PhyPeakLevel: 4,
+		DynPwrMax: 12,
+		DynPwrMin: 12,
+		PwrMinLevel: 5,
+		PwrLoad: 27,
+		TimingOffset: -7,
+		InitTimingOffset: -1,
+		TimingAdjustRawAvg: 3,
+		TimingAdjustRawLtAvg: -5,
+		TimingAdjustRawMin: -9,
+		TimingAdjustRawMax: -2,
+		GoodCoefCnt: 9,
+		ScaleCoefCnt: 10,
+		ImpulseCoefCnt: 11,
+		PreEquCoeffLoadCnt: 12,
+		PhyOpMode: 2,
+		InitRngInterval: 25,
+		HitCount: 150,
+		MisCount: 7,
+		ConMisCount:1,
+		PowerAdj: -2,
+		CmdpwrRepPwr: 1,
+		CmdpwrCmdPwr: 1,
+		CmdpwrPwrLow: 1,
+		CmdpwrPwrLoad: 1,
+		CmdpwrRepPwrNorm: 1,
+		CmdpwrCmdPwrNorm: 1,
+		CmdpwrPwrLowNorm: 1,
+		CmdpwrPwrLoadNorm: 1,
+	}
+
+var Rang_CmtxState_V2=ranging_tm_v2.Ranging_Cm_Stats_Ranging_Cmtx_Stats {
+	        UcId: 3,
+		RngState :  "test",
+		Snr: 38,
+		DataMer: 36,
+                RxPower: 6,
+		PwrReportLevel: 8,
+		PwrPeakLevel: 3,
+		PhyPeakLevel: 4,
+		DynPwrMax: 12,
+		DynPwrMin: 12,
+		PwrMinLevel: 5,
+		PwrLoad: 27,
+		TimingOffset: -7,
+		InitTimingOffset: -1,
+		TimingAdjustRawAvg: 3,
+		TimingAdjustRawLtAvg: -5,
+		TimingAdjustRawMin: -9,
+		TimingAdjustRawMax: -2,
+		GoodCoefCnt: 9,
+		ScaleCoefCnt: 10,
+		ImpulseCoefCnt: 11,
+		PreEquCoeffLoadCnt: 12,
+		PhyOpMode: 2,
+		InitRngInterval: 25,
+		HitCount: 150,
+		MisCount: 7,
+		ConMisCount:1,
+		PowerAdj: -2,
+		CmdpwrRepPwr: 1,
+		CmdpwrCmdPwr: 1,
+		CmdpwrPwrLow: 1,
+		CmdpwrPwrLoad: 1,
+		CmdpwrRepPwrNorm: 1,
+		CmdpwrCmdPwrNorm: 1,
+		CmdpwrPwrLowNorm: 1,
+		ReserveForV2Cnbr: "test_v2",
+	}
+
+
+var Rang_CmtxState_V3=ranging_tm_v3.Ranging_Cm_Stats_Ranging_Cmtx_Stats {
+	        UcId: 3,
+		RngState :  "test",
+		Snr: 38,
+		DataMer: 36,
+                RxPower: 6,
+		PwrReportLevel: 8,
+		PwrPeakLevel: 3,
+		PhyPeakLevel: 4,
+		DynPwrMax: 12,
+		DynPwrMin: 12,
+		PwrMinLevel: 5,
+		PwrLoad: 27,
+		TimingOffset: -7,
+		InitTimingOffset: -1,
+		TimingAdjustRawAvg: 3,
+		TimingAdjustRawLtAvg: -5,
+		TimingAdjustRawMin: -9,
+		TimingAdjustRawMax: -2,
+		GoodCoefCnt: 9,
+		ScaleCoefCnt: 10,
+		ImpulseCoefCnt: 11,
+		PreEquCoeffLoadCnt: 12,
+		PhyOpMode: 2,
+		InitRngInterval: 25,
+		HitCount: 150,
+		MisCount: 7,
+		ConMisCount:1,
+		PowerAdj: -2,
+		CmdpwrRepPwr: 1,
+		CmdpwrCmdPwr: 1,
+		CmdpwrPwrLow: 1,
+		CmdpwrPwrLoad: 1,
+		CmdpwrRepPwrNorm: 1,
+		CmdpwrCmdPwrNorm: 1,
+		CmdpwrPwrLowNorm: 1,
+		ReserveForV2Cnbr: "test_v3",
+		MisCountV3: 90,
+	}
+
+var RangingTm = ranging_tm.Ranging_Cm_Stats{
+	SgId: 0,
+	MdId: 0,
+	CmMac: "AA:BB:CC:DD:11:FF",
+	MinPwrLoad: 6,
+	CmtxStats: [] *ranging_tm.Ranging_Cm_Stats_Ranging_Cmtx_Stats {},
+	SmExhaustedCount: 9,
+	CmdpwrPwrMax: 8,
+	CmdpwrPwrHi: 7,
+	CmdpwrNeq: 32,
+	CmdpwrLoadMinSet: 3,
+	CmdpwrMinDrw: 1,
+	CmdpwrMaxDrw: 1,
+	CmdpwrPwrMaxNorm: 10,
+	CmdpwrPwrHiNorm: 9,
+	CmdpwrLoadMinSetNorm: 5,
+	CmdpwrMinDrwNorm: 1,
+	CmdpwrMaxDrwNorm: 1,
+}
+
+var RangingTmV2 = ranging_tm_v2.Ranging_Cm_Stats{
+	SgId: 0,
+	MdId: 0,
+	CmMac: "AA:BB:CC:DD:EE:FF",
+	MinPwrLoad: 6,
+	CmtxStats: [] *ranging_tm_v2.Ranging_Cm_Stats_Ranging_Cmtx_Stats {},
+	SmExhaustedCount: 9,
+	CmdpwrPwrMax: 8,
+	CmdpwrPwrHi: 7,
+	CmdpwrNeq: 32,
+	CmdpwrLoadMinSet: 3,
+	CmdpwrMinDrw: 1,
+	CmdpwrMaxDrw: 1,
+	CmdpwrPwrMaxNorm: 10,
+	CmdpwrPwrHiNorm: 9,
+	CmdpwrLoadMinSetNorm: 5,
+	CmdpwrMinDrwNorm: 1,
+	CmdpwrMaxDrwNorm: 1,
+}
+
+var RangingTmV3 = ranging_tm_v3.Ranging_Cm_Stats{
+	SgId: 0,
+	MdId: 0,
+	CmMac: "3F:BB:CC:DD:EE:FF",
+	MinPwrLoad: 6,
+	CmtxStats: [] *ranging_tm_v3.Ranging_Cm_Stats_Ranging_Cmtx_Stats {},
+	SmExhaustedCount: 9,
+	CmdpwrPwrMax: 8,
+	CmdpwrPwrHi: 7,
+	CmdpwrNeq: 32,
+	CmdpwrLoadMinSet: 3,
+	CmdpwrMinDrw: 1,
+	CmdpwrMaxDrw: 1,
+	CmdpwrPwrMaxNorm: 10,
+	CmdpwrPwrHiNorm: 9,
+	CmdpwrLoadMinSetNorm: 5,
+	CmdpwrMinDrwNorm: 1,
+	CmdpwrMaxDrwNorm: 1,
+}
+
 var UsResilStatsMsg = usresiltm.UsResilStats{
 	SgId:       0,
 	MdId:       0,
 	ResilCmCnt: 6,
 	TotalCmCnt: 8,
 }
+
+
 
 func StringIpToInt(ipstring string) int {
 	ipSegs := strings.Split(ipstring, ".")
@@ -77,21 +260,87 @@ func IpIntToString(ipInt int) string {
 	return buffer.String()
 }
 
+func fill_allcmmgmt(req *chan_service.Request) {
+	req.ProtoName = "ALLCMMGMT"
+	req.UnixTime = time.Now().UnixNano()
+        req.Namespace = "cmts-data"
+        req.Expiration = 30
+        req.IsDelta = true
+        allCmsTm := cmmgmt.AllCmStatesTmMsg{}
+        allCmsTm.AllCmStatesTm = append(allCmsTm.AllCmStatesTm, &CmStateTm)
+        bytes, err1 := proto.Marshal(&allCmsTm)
+        if err1 != nil {
+               fmt.Println("Proto ALLCMMGMT marshal error - ", err1)
+        }
+        req.TmData = bytes
+
+}
+
+func fill_ranging_cm(req *chan_service.Request) {
+	req.ProtoName = "RANGING_CM"
+	req.UnixTime = time.Now().UnixNano()
+        req.Namespace = "cmts-data"
+        req.Expiration = 30
+        req.IsDelta = true
+	RangingTm.CmtxStats = append(RangingTm.CmtxStats, &Rang_CmtxState)
+        RangingCmsTm := ranging_tm.Ranging_Cm_Stats_List{}
+        RangingCmsTm.CmStats = append(RangingCmsTm.CmStats, &RangingTm)
+        bytes, err1 := proto.Marshal(&RangingCmsTm)
+        if err1 != nil {
+               fmt.Println("Proto RANGING_CM marshal error - ", err1)
+        }
+        req.TmData = bytes
+
+}
+
+func fill_ranging_cm_v2(req *chan_service.Request) {
+	req.ProtoName = "RANGING_CM_V2"
+	req.UnixTime = time.Now().UnixNano()
+        req.Namespace = "cmts-data"
+        req.Expiration = 30
+        req.IsDelta = true
+	RangingTmV2.CmtxStats = append(RangingTmV2.CmtxStats, &Rang_CmtxState_V2)
+        RangingCmsTm := ranging_tm_v2.Ranging_Cm_Stats_List{}
+        RangingCmsTm.CmStats = append(RangingCmsTm.CmStats, &RangingTmV2)
+        bytes, err1 := proto.Marshal(&RangingCmsTm)
+        if err1 != nil {
+               fmt.Println("Proto RANGING_CM marshal error - ", err1)
+        }
+        req.TmData = bytes
+}
+
+func fill_ranging_cm_v3(req *chan_service.Request) {
+	req.ProtoName = "RANGING_CM_V3"
+	req.UnixTime = time.Now().UnixNano()
+        req.Namespace = "cmts-data"
+        req.Expiration = 30
+        req.IsDelta = true
+	RangingTmV3.CmtxStats = append(RangingTmV3.CmtxStats, &Rang_CmtxState_V3)
+        RangingCmsTm := ranging_tm_v3.Ranging_Cm_Stats_List{}
+        RangingCmsTm.CmStats = append(RangingCmsTm.CmStats, &RangingTmV3)
+        bytes, err1 := proto.Marshal(&RangingCmsTm)
+        if err1 != nil {
+               fmt.Println("Proto RANGING_CM marshal error - ", err1)
+        }
+        req.TmData = bytes
+}
+
 func main() {
 	var req chan_service.Request
-	var req_usresil chan_service.Request
 	var cluster_ip_int int
 	var num_of_ips int
 	var num_of_msgs int
+	var protobuf_name string
 
-	if len(os.Args) < 5 {
-		fmt.Println("Please input right parameter as: cnbr_sim <opshub-clusetr-ip> <cnbr-cluster-ip-start> <num-of-ips> <num-of-msgs>")
+	if len(os.Args) < 6 {
+		fmt.Println("Please input right parameter as: cnbr_sim <opshub-clusetr-ip> <cnbr-cluster-ip-start> <num-of-ips> <num-of-msgs> <pb-name>")
 		return
 	}
 
 	cluster_ip_int = StringIpToInt(os.Args[2])
 	num_of_ips, _ = strconv.Atoi(os.Args[3])
 	num_of_msgs, _ = strconv.Atoi(os.Args[4])
+	protobuf_name = os.Args[5]
 	//fmt.Printf("opshub ip: %s, cnbr_ip_int= %d, num_of_ips=%d \n", os.Args[1], cluster_ip_int, num_of_ips)
 	// Set up a connection to the server.
 	creds := credentials.NewTLS(&tls.Config{InsecureSkipVerify: true})
@@ -103,35 +352,19 @@ func main() {
 	} else {
 		fmt.Println("Connected to", endPoint, " error:", err)
 	}
-
+        fmt.Println("Protobuf name%s:", protobuf_name)
 	RemoteClient := chan_service.NewPostClient(RemoteConn)
 	defer RemoteConn.Close()
-
-	req.ProtoName = "ALLCMMGMT"
-	req.UnixTime = time.Now().UnixNano()
-	req.Namespace = "cmts-data"
-	req.Expiration = 30
-	req.IsDelta = true
-	allCmsTm := cmmgmt.AllCmStatesTmMsg{}
-	allCmsTm.AllCmStatesTm = append(allCmsTm.AllCmStatesTm, &CmStateTm)
-	bytes, err1 := proto.Marshal(&allCmsTm)
-	if err1 != nil {
-		fmt.Println("Proto ALLCMMGMT marshal error - ", err)
+        switch protobuf_name {
+	case "ALLCMMGMT":
+            fill_allcmmgmt(&req)
+	case "RANGING_CM":
+            fill_ranging_cm(&req)
+	case "RANGING_CM_V2":
+            fill_ranging_cm_v2(&req)
+	case "RANGING_CM_V3":
+            fill_ranging_cm_v3(&req)
 	}
-	req.TmData = bytes
-
-	req_usresil.ProtoName = "USRESIL_STATS"
-	req_usresil.UnixTime = time.Now().UnixNano()
-	req_usresil.Namespace = "cmts-data"
-	req_usresil.Expiration = 30
-	req_usresil.IsDelta = true
-	UsResilStatsList := usresiltm.UsResilStatsList{}
-	UsResilStatsList.Stats = append(UsResilStatsList.Stats, &UsResilStatsMsg)
-	bytes_usresil, err1 := proto.Marshal(&UsResilStatsList)
-	if err1 != nil {
-		fmt.Println("Proto USRESIL_STATS marshal error - ", err)
-	}
-	req_usresil.TmData = bytes_usresil
 
 	loop_end := false
 
@@ -144,11 +377,6 @@ func main() {
 				fmt.Println("GRPC Connection not available: ", err)
 			}
 
-			req_usresil.ClusterIp = IpIntToString(cluster_ip_int + i)
-			_, err = RemoteClient.StreamTmData(context.Background(), &req_usresil)
-			if err != nil {
-				fmt.Println("GRPC Connection not available: ", err)
-			}
 			if num_of_msgs != 0 {
 				if msg_cnt > 0 {
 					msg_cnt = msg_cnt - 1
